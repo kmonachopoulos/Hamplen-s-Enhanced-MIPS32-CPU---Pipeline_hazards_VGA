@@ -1,0 +1,1684 @@
+Analysis & Synthesis report for Video_MIPS
+Thu Mar 26 02:34:36 2015
+Quartus II 64-Bit Version 7.2 Build 151 09/26/2007 SJ Full Version
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Analysis & Synthesis Source Files Read
+  5. Analysis & Synthesis Resource Usage Summary
+  6. Analysis & Synthesis Resource Utilization by Entity
+  7. Analysis & Synthesis RAM Summary
+  8. State Machine - |Video_MIPS|LCD_Display:LCD|next_command
+  9. State Machine - |Video_MIPS|LCD_Display:LCD|state
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for instrfetch:IFE|altsyncram:Instr_Memory|altsyncram_r1g3:auto_generated
+ 16. Source assignments for datamemory:MEM|altsyncram:datamemory|altsyncram_1eh3:auto_generated
+ 17. Source assignments for LPM_ROM:format_rom|altrom:srom|altsyncram:rom_block|altsyncram_c201:auto_generated
+ 18. Source assignments for Char_ROM:CGROM|LPM_ROM:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_6401:auto_generated
+ 19. Parameter Settings for User Entity Instance: Top-level Entity: |Video_MIPS
+ 20. Parameter Settings for User Entity Instance: instrfetch:IFE|altsyncram:Instr_Memory
+ 21. Parameter Settings for User Entity Instance: datamemory:MEM|altsyncram:datamemory
+ 22. Parameter Settings for User Entity Instance: LPM_ROM:format_rom
+ 23. Parameter Settings for User Entity Instance: video_PLL:video_PLL_inst|altpll:altpll_component
+ 24. Parameter Settings for User Entity Instance: Char_ROM:CGROM|LPM_ROM:char_gen_rom
+ 25. Parameter Settings for User Entity Instance: LCD_Display:LCD
+ 26. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2007 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++------------------------------------+------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Thu Mar 26 02:34:36 2015    ;
+; Quartus II 64-Bit Version          ; 7.2 Build 151 09/26/2007 SJ Full Version ;
+; Revision Name                      ; Video_MIPS                               ;
+; Top-level Entity Name              ; Video_MIPS                               ;
+; Family                             ; Cyclone II                               ;
+; Total logic elements               ; 1,286                                    ;
+;     Total combinational functions  ; 1,286                                    ;
+;     Dedicated logic registers      ; 543                                      ;
+; Total registers                    ; 543                                      ;
+; Total pins                         ; 26                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 20,840                                   ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Total PLLs                         ; 1                                        ;
++------------------------------------+------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                            ;
++--------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                         ; Setting            ; Default Value      ;
++--------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                         ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                          ; Video_MIPS         ; Video_MIPS         ;
+; Family name                                                                    ; Cyclone II         ; Stratix            ;
+; Use smart compilation                                                          ; Off                ; Off                ;
+; Maximum processors allowed for parallel compilation                            ; 1                  ; 1                  ;
+; Restructure Multiplexers                                                       ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                            ; Off                ; Off                ;
+; Preserve fewer node names                                                      ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                      ; Off                ; Off                ;
+; Verilog Version                                                                ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                   ; VHDL93             ; VHDL93             ;
+; State Machine Processing                                                       ; Auto               ; Auto               ;
+; Safe State Machine                                                             ; Off                ; Off                ;
+; Extract Verilog State Machines                                                 ; On                 ; On                 ;
+; Extract VHDL State Machines                                                    ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                              ; Off                ; Off                ;
+; Add Pass-Through Logic to Inferred RAMs                                        ; On                 ; On                 ;
+; Parallel Synthesis                                                             ; Off                ; Off                ;
+; DSP Block Balancing                                                            ; Auto               ; Auto               ;
+; Maximum DSP Block Usage                                                        ; Unlimited          ; Unlimited          ;
+; NOT Gate Push-Back                                                             ; On                 ; On                 ;
+; Power-Up Don't Care                                                            ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                   ; Off                ; Off                ;
+; Remove Duplicate Registers                                                     ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                           ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                         ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                          ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                           ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                            ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                 ; Off                ; Off                ;
+; Optimization Technique -- Cyclone II/Cyclone III                               ; Balanced           ; Balanced           ;
+; Carry Chain Length -- Stratix/Stratix GX/Cyclone/MAX II/Cyclone II/Cyclone III ; 70                 ; 70                 ;
+; Auto Carry Chains                                                              ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                           ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                          ; Off                ; Off                ;
+; Perform gate-level register retiming                                           ; Off                ; Off                ;
+; Allow register retiming to trade off Tsu/Tco with Fmax                         ; On                 ; On                 ;
+; Auto ROM Replacement                                                           ; On                 ; On                 ;
+; Auto RAM Replacement                                                           ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                  ; On                 ; On                 ;
+; Allow Synchronous Control Signals                                              ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                         ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                              ; Off                ; Off                ;
+; Auto Resource Sharing                                                          ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                             ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                             ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                  ; Off                ; Off                ;
+; Maximum Number of M4K/M9K Memory Blocks                                        ; Unlimited          ; Unlimited          ;
+; Ignore translate_off and synthesis_off directives                              ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                             ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                             ; Off                ; Off                ;
+; Retiming Meta-Stability Register Sequence Length                               ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                              ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                           ; On                 ; On                 ;
+; Block Design Naming                                                            ; Auto               ; Auto               ;
++--------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                             ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                   ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+
+; pipe_control_unit.vhd            ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/pipe_control_unit.vhd   ;
+; pipe_data_memory.vhd             ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/pipe_data_memory.vhd    ;
+; pipe_definitions.vhd             ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/pipe_definitions.vhd    ;
+; pipe_execution_unit.vhd          ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/pipe_execution_unit.vhd ;
+; pipe_instr_fetch.vhd             ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/pipe_instr_fetch.vhd    ;
+; pipe_operand_fetch.vhd           ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/pipe_operand_fetch.vhd  ;
+; video_PLL.vhd                    ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/video_PLL.vhd           ;
+; lcd_display.vhd                  ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/lcd_display.vhd         ;
+; CHAR_ROM.VHD                     ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/CHAR_ROM.VHD            ;
+; DEBOUNCE.VHD                     ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/DEBOUNCE.VHD            ;
+; ONEPULSE.VHD                     ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/ONEPULSE.VHD            ;
+; VGA_SYNC.VHD                     ; yes             ; User VHDL File               ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/VGA_SYNC.VHD            ;
+; Video_MIPS.vhd                   ; yes             ; Other                        ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/Video_MIPS.vhd          ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altsyncram.tdf                                    ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/stratix_ram_block.inc                             ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/lpm_mux.inc                                       ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/lpm_decode.inc                                    ;
+; aglobal72.inc                    ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/aglobal72.inc                                     ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/a_rdenreg.inc                                     ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altrom.inc                                        ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altram.inc                                        ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altdpram.inc                                      ;
+; altqpram.inc                     ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altqpram.inc                                      ;
+; db/altsyncram_r1g3.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/db/altsyncram_r1g3.tdf  ;
+; db/altsyncram_1eh3.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/db/altsyncram_1eh3.tdf  ;
+; LPM_ROM.tdf                      ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/LPM_ROM.tdf                                       ;
+; altrom.tdf                       ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altrom.tdf                                        ;
+; memmodes.inc                     ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/others/maxplus2/memmodes.inc                                    ;
+; altsyncram.inc                   ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altsyncram.inc                                    ;
+; db/altsyncram_c201.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/db/altsyncram_c201.tdf  ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/altpll.tdf                                        ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/stratix_pll.inc                                   ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/stratixii_pll.inc                                 ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/altera/72/quartus/libraries/megafunctions/cycloneii_pll.inc                                 ;
+; db/altsyncram_6401.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Workspace/Quartus/VHDL FINAL/FINAL - MIPS 32 Pipelined - Video - V2/db/altsyncram_6401.tdf  ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 1,286 ;
+;                                             ;       ;
+; Total combinational functions               ; 1286  ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 765   ;
+;     -- 3 input functions                    ; 271   ;
+;     -- <=2 input functions                  ; 250   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 1199  ;
+;     -- arithmetic mode                      ; 87    ;
+;                                             ;       ;
+; Total registers                             ; 543   ;
+;     -- Dedicated logic registers            ; 543   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 26    ;
+; Total memory bits                           ; 20840 ;
+; Total PLLs                                  ; 1     ;
+; Maximum fan-out node                        ; clock ;
+; Maximum fan-out                             ; 486   ;
+; Total fan-out                               ; 6960  ;
+; Average fan-out                             ; 3.60  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                          ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                      ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                             ; Library Name ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+; |Video_MIPS                                     ; 1286 (160)        ; 543 (11)     ; 20840       ; 0            ; 0       ; 0         ; 26   ; 0            ; |Video_MIPS                                                                                                     ; work         ;
+;    |Char_ROM:CGROM|                             ; 5 (5)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|Char_ROM:CGROM                                                                                      ; work         ;
+;       |lpm_rom:char_gen_rom|                    ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|Char_ROM:CGROM|lpm_rom:char_gen_rom                                                                 ; work         ;
+;          |altrom:srom|                          ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|Char_ROM:CGROM|lpm_rom:char_gen_rom|altrom:srom                                                     ; work         ;
+;             |altsyncram:rom_block|              ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|Char_ROM:CGROM|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block                                ; work         ;
+;                |altsyncram_6401:auto_generated| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|Char_ROM:CGROM|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_6401:auto_generated ; work         ;
+;    |LCD_Display:LCD|                            ; 160 (160)         ; 60 (60)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|LCD_Display:LCD                                                                                     ; work         ;
+;    |VGA_SYNC:SYNC|                              ; 46 (46)           ; 45 (45)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|VGA_SYNC:SYNC                                                                                       ; work         ;
+;    |controlunit:CTRL|                           ; 24 (24)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|controlunit:CTRL                                                                                    ; work         ;
+;    |datamemory:MEM|                             ; 55 (55)           ; 55 (55)      ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|datamemory:MEM                                                                                      ; work         ;
+;       |altsyncram:datamemory|                   ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|datamemory:MEM|altsyncram:datamemory                                                                ; work         ;
+;          |altsyncram_1eh3:auto_generated|       ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|datamemory:MEM|altsyncram:datamemory|altsyncram_1eh3:auto_generated                                 ; work         ;
+;    |debounce:DB1|                               ; 2 (2)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|debounce:DB1                                                                                        ; work         ;
+;    |execution:EX|                               ; 292 (292)         ; 52 (52)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|execution:EX                                                                                        ; work         ;
+;    |instrfetch:IFE|                             ; 66 (66)           ; 14 (14)      ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|instrfetch:IFE                                                                                      ; work         ;
+;       |altsyncram:Instr_Memory|                 ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|instrfetch:IFE|altsyncram:Instr_Memory                                                              ; work         ;
+;          |altsyncram_r1g3:auto_generated|       ; 0 (0)             ; 0 (0)        ; 8192        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|instrfetch:IFE|altsyncram:Instr_Memory|altsyncram_r1g3:auto_generated                               ; work         ;
+;    |lpm_rom:format_rom|                         ; 0 (0)             ; 0 (0)        ; 360         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|lpm_rom:format_rom                                                                                  ; work         ;
+;       |altrom:srom|                             ; 0 (0)             ; 0 (0)        ; 360         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|lpm_rom:format_rom|altrom:srom                                                                      ; work         ;
+;          |altsyncram:rom_block|                 ; 0 (0)             ; 0 (0)        ; 360         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|lpm_rom:format_rom|altrom:srom|altsyncram:rom_block                                                 ; work         ;
+;             |altsyncram_c201:auto_generated|    ; 0 (0)             ; 0 (0)        ; 360         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|lpm_rom:format_rom|altrom:srom|altsyncram:rom_block|altsyncram_c201:auto_generated                  ; work         ;
+;    |onepulse:SP1|                               ; 1 (1)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|onepulse:SP1                                                                                        ; work         ;
+;    |operandfetch:ID|                            ; 475 (475)         ; 290 (290)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|operandfetch:ID                                                                                     ; work         ;
+;    |video_PLL:video_PLL_inst|                   ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|video_PLL:video_PLL_inst                                                                            ; work         ;
+;       |altpll:altpll_component|                 ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Video_MIPS|video_PLL:video_PLL_inst|altpll:altpll_component                                                    ; work         ;
++-------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                ;
++----------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+------------------------+
+; Name                                                                                                           ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF                    ;
++----------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+------------------------+
+; Char_ROM:CGROM|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_6401:auto_generated|ALTSYNCRAM ; AUTO ; ROM         ; 512          ; 8            ; --           ; --           ; 4096 ; tcgrom.mif             ;
+; datamemory:MEM|altsyncram:datamemory|altsyncram_1eh3:auto_generated|ALTSYNCRAM                                 ; AUTO ; Single Port ; 256          ; 32           ; --           ; --           ; 8192 ; data_memory.mif        ;
+; instrfetch:IFE|altsyncram:Instr_Memory|altsyncram_r1g3:auto_generated|ALTSYNCRAM                               ; AUTO ; ROM         ; 256          ; 32           ; --           ; --           ; 8192 ; pipelining_example.mif ;
+; lpm_rom:format_rom|altrom:srom|altsyncram:rom_block|altsyncram_c201:auto_generated|ALTSYNCRAM                  ; AUTO ; ROM         ; 60           ; 6            ; --           ; --           ; 360  ; format.mif             ;
++----------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+------+------------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Video_MIPS|LCD_Display:LCD|next_command                                                                                                                                                                                                                                                                                                 ;
++----------------------------+----------------------------+--------------------------+---------------------+-------------------+---------------------+-------------------------+--------------------------+--------------------+---------------------------+-----------------------+-------------------------+-----------------------+---------------------+
+; Name                       ; next_command.display_clear ; next_command.display_off ; next_command.reset3 ; next_command.hold ; next_command.reset1 ; next_command.drop_lcd_e ; next_command.return_home ; next_command.line2 ; next_command.print_string ; next_command.mode_set ; next_command.display_on ; next_command.func_set ; next_command.reset2 ;
++----------------------------+----------------------------+--------------------------+---------------------+-------------------+---------------------+-------------------------+--------------------------+--------------------+---------------------------+-----------------------+-------------------------+-----------------------+---------------------+
+; next_command.reset2        ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 0                   ;
+; next_command.func_set      ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 1                     ; 1                   ;
+; next_command.display_on    ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 1                       ; 0                     ; 1                   ;
+; next_command.mode_set      ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 1                     ; 0                       ; 0                     ; 1                   ;
+; next_command.print_string  ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 1                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.line2         ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 1                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.return_home   ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 1                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.drop_lcd_e    ; 0                          ; 0                        ; 0                   ; 0                 ; 0                   ; 1                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.reset1        ; 0                          ; 0                        ; 0                   ; 0                 ; 1                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.hold          ; 0                          ; 0                        ; 0                   ; 1                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.reset3        ; 0                          ; 0                        ; 1                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.display_off   ; 0                          ; 1                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
+; next_command.display_clear ; 1                          ; 0                        ; 0                   ; 0                 ; 0                   ; 0                       ; 0                        ; 0                  ; 0                         ; 0                     ; 0                       ; 0                     ; 1                   ;
++----------------------------+----------------------------+--------------------------+---------------------+-------------------+---------------------+-------------------------+--------------------------+--------------------+---------------------------+-----------------------+-------------------------+-----------------------+---------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Video_MIPS|LCD_Display:LCD|state                                                                                                                                                                                                      ;
++---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
+; Name                ; state.display_clear ; state.display_off ; state.reset3 ; state.reset2 ; state.hold ; state.drop_lcd_e ; state.return_home ; state.line2 ; state.print_string ; state.mode_set ; state.display_on ; state.func_set ; state.reset1 ;
++---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
+; state.reset1        ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 0            ;
+; state.func_set      ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 1              ; 1            ;
+; state.display_on    ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 1                ; 0              ; 1            ;
+; state.mode_set      ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 1              ; 0                ; 0              ; 1            ;
+; state.print_string  ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 1                  ; 0              ; 0                ; 0              ; 1            ;
+; state.line2         ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 1           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.return_home   ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 1                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.drop_lcd_e    ; 0                   ; 0                 ; 0            ; 0            ; 0          ; 1                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.hold          ; 0                   ; 0                 ; 0            ; 0            ; 1          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.reset2        ; 0                   ; 0                 ; 0            ; 1            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.reset3        ; 0                   ; 0                 ; 1            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.display_off   ; 0                   ; 1                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
+; state.display_clear ; 1                   ; 0                 ; 0            ; 0            ; 0          ; 0                ; 0                 ; 0           ; 0                  ; 0              ; 0                ; 0              ; 1            ;
++---------------------+---------------------+-------------------+--------------+--------------+------------+------------------+-------------------+-------------+--------------------+----------------+------------------+----------------+--------------+
+
+
++------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                       ;
++-----------------------------------------+------------------------------------------------+
+; Register name                           ; Reason for Removal                             ;
++-----------------------------------------+------------------------------------------------+
+; onepulse:SP1|Power_on                   ; Stuck at VCC due to stuck port data_in         ;
+; operandfetch:ID|Sign_Extend_p[16..31]   ; Stuck at GND due to stuck port data_in         ;
+; operandfetch:ID|Read_Data_2_p[8..31]    ; Stuck at GND due to stuck port data_in         ;
+; operandfetch:ID|Read_Data_1_p[8..31]    ; Stuck at GND due to stuck port data_in         ;
+; instrfetch:IFE|PC[0..1]                 ; Stuck at GND due to stuck port data_in         ;
+; execution:EX|Read_Data_2_pp[8..31]      ; Stuck at GND due to stuck port data_in         ;
+; controlunit:CTRL|MemRead_p              ; Merged with controlunit:CTRL|MemtoReg_p        ;
+; controlunit:CTRL|ALU_Op_p[1]            ; Merged with controlunit:CTRL|RegDst_p          ;
+; operandfetch:ID|Sign_Extend_p[0]        ; Merged with operandfetch:ID|Instruction_pp[0]  ;
+; operandfetch:ID|Sign_Extend_p[1]        ; Merged with operandfetch:ID|Instruction_pp[1]  ;
+; operandfetch:ID|Sign_Extend_p[2]        ; Merged with operandfetch:ID|Instruction_pp[2]  ;
+; operandfetch:ID|Sign_Extend_p[3]        ; Merged with operandfetch:ID|Instruction_pp[3]  ;
+; operandfetch:ID|Sign_Extend_p[4]        ; Merged with operandfetch:ID|Instruction_pp[4]  ;
+; operandfetch:ID|Sign_Extend_p[5]        ; Merged with operandfetch:ID|Instruction_pp[5]  ;
+; operandfetch:ID|Sign_Extend_p[6]        ; Merged with operandfetch:ID|Instruction_pp[6]  ;
+; operandfetch:ID|Sign_Extend_p[7]        ; Merged with operandfetch:ID|Instruction_pp[7]  ;
+; operandfetch:ID|Sign_Extend_p[8]        ; Merged with operandfetch:ID|Instruction_pp[8]  ;
+; operandfetch:ID|Sign_Extend_p[9]        ; Merged with operandfetch:ID|Instruction_pp[9]  ;
+; operandfetch:ID|Sign_Extend_p[10]       ; Merged with operandfetch:ID|Instruction_pp[10] ;
+; operandfetch:ID|Write_Address_1_p[0]    ; Merged with operandfetch:ID|Instruction_pp[11] ;
+; operandfetch:ID|Sign_Extend_p[11]       ; Merged with operandfetch:ID|Instruction_pp[11] ;
+; operandfetch:ID|Write_Address_1_p[1]    ; Merged with operandfetch:ID|Instruction_pp[12] ;
+; operandfetch:ID|Sign_Extend_p[12]       ; Merged with operandfetch:ID|Instruction_pp[12] ;
+; operandfetch:ID|Write_Address_1_p[2]    ; Merged with operandfetch:ID|Instruction_pp[13] ;
+; operandfetch:ID|Sign_Extend_p[13]       ; Merged with operandfetch:ID|Instruction_pp[13] ;
+; operandfetch:ID|Write_Address_1_p[3]    ; Merged with operandfetch:ID|Instruction_pp[14] ;
+; operandfetch:ID|Sign_Extend_p[14]       ; Merged with operandfetch:ID|Instruction_pp[14] ;
+; operandfetch:ID|Write_Address_1_p[4]    ; Merged with operandfetch:ID|Instruction_pp[15] ;
+; operandfetch:ID|Sign_Extend_p[15]       ; Merged with operandfetch:ID|Instruction_pp[15] ;
+; operandfetch:ID|Write_Address_0_p[0]    ; Merged with operandfetch:ID|Instruction_pp[16] ;
+; operandfetch:ID|Write_Address_0_p[1]    ; Merged with operandfetch:ID|Instruction_pp[17] ;
+; operandfetch:ID|Write_Address_0_p[2]    ; Merged with operandfetch:ID|Instruction_pp[18] ;
+; operandfetch:ID|Write_Address_0_p[3]    ; Merged with operandfetch:ID|Instruction_pp[19] ;
+; operandfetch:ID|Write_Address_0_p[4]    ; Merged with operandfetch:ID|Instruction_pp[20] ;
+; operandfetch:ID|Write_Address_2_p[0]    ; Merged with operandfetch:ID|Instruction_pp[21] ;
+; operandfetch:ID|Write_Address_2_p[1]    ; Merged with operandfetch:ID|Instruction_pp[22] ;
+; operandfetch:ID|Write_Address_2_p[2]    ; Merged with operandfetch:ID|Instruction_pp[23] ;
+; operandfetch:ID|Write_Address_2_p[3]    ; Merged with operandfetch:ID|Instruction_pp[24] ;
+; operandfetch:ID|Write_Address_2_p[4]    ; Merged with operandfetch:ID|Instruction_pp[25] ;
+; VGA_SYNC:SYNC|green_out                 ; Merged with VGA_SYNC:SYNC|red_out              ;
+; controlunit:CTRL|IF_Flush               ; Merged with controlunit:CTRL|ALU_Op_p[0]       ;
+; operandfetch:ID|register_array[0][0]    ; Stuck at GND due to stuck port clock_enable    ;
+; operandfetch:ID|register_array[0][1]    ; Stuck at GND due to stuck port clock_enable    ;
+; operandfetch:ID|register_array[0][2]    ; Stuck at GND due to stuck port clock_enable    ;
+; operandfetch:ID|register_array[0][3]    ; Stuck at GND due to stuck port clock_enable    ;
+; operandfetch:ID|register_array[0][4]    ; Stuck at GND due to stuck port clock_enable    ;
+; operandfetch:ID|register_array[0][5]    ; Stuck at GND due to stuck port clock_enable    ;
+; operandfetch:ID|register_array[0][6]    ; Stuck at GND due to stuck port clock_enable    ;
+; operandfetch:ID|register_array[0][7]    ; Stuck at GND due to stuck port clock_enable    ;
+; VGA_SYNC:SYNC|pixel_row[9]              ; Stuck at GND due to stuck port data_in         ;
+; LCD_Display:LCD|next_command.drop_lcd_e ; Stuck at GND due to stuck port data_in         ;
+; LCD_Display:LCD|next_command.hold       ; Stuck at GND due to stuck port data_in         ;
+; LCD_Display:LCD|next_command.reset1     ; Stuck at GND due to stuck port data_in         ;
+; Total Number of Removed Registers = 138 ;                                                ;
++-----------------------------------------+------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                            ;
++-----------------------------------+---------------------------+----------------------------------------+
+; Register name                     ; Reason for Removal        ; Registers Removed due to This Register ;
++-----------------------------------+---------------------------+----------------------------------------+
+; operandfetch:ID|Read_Data_2_p[8]  ; Stuck at GND              ; execution:EX|Read_Data_2_pp[8]         ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[9]  ; Stuck at GND              ; execution:EX|Read_Data_2_pp[9]         ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[10] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[10]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[11] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[11]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[12] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[12]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[13] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[13]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[14] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[14]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[15] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[15]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[16] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[16]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[17] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[17]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[18] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[18]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[19] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[19]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[20] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[20]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[21] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[21]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[22] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[22]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[23] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[23]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[24] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[24]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[25] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[25]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[26] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[26]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[27] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[27]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[28] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[28]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[29] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[29]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[30] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[30]        ;
+;                                   ; due to stuck port data_in ;                                        ;
+; operandfetch:ID|Read_Data_2_p[31] ; Stuck at GND              ; execution:EX|Read_Data_2_pp[31]        ;
+;                                   ; due to stuck port data_in ;                                        ;
++-----------------------------------+---------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 543   ;
+; Number of registers using Synchronous Clear  ; 116   ;
+; Number of registers using Synchronous Load   ; 38    ;
+; Number of registers using Asynchronous Clear ; 248   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 366   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; operandfetch:ID|register_array[19][0]   ; 2       ;
+; operandfetch:ID|register_array[21][0]   ; 2       ;
+; operandfetch:ID|register_array[17][0]   ; 2       ;
+; operandfetch:ID|register_array[23][0]   ; 2       ;
+; operandfetch:ID|register_array[13][0]   ; 2       ;
+; operandfetch:ID|register_array[11][0]   ; 2       ;
+; operandfetch:ID|register_array[9][0]    ; 2       ;
+; operandfetch:ID|register_array[15][0]   ; 2       ;
+; operandfetch:ID|register_array[5][0]    ; 2       ;
+; operandfetch:ID|register_array[3][0]    ; 2       ;
+; operandfetch:ID|register_array[1][0]    ; 2       ;
+; operandfetch:ID|register_array[7][0]    ; 2       ;
+; operandfetch:ID|register_array[27][0]   ; 2       ;
+; operandfetch:ID|register_array[29][0]   ; 2       ;
+; operandfetch:ID|register_array[25][0]   ; 2       ;
+; operandfetch:ID|register_array[31][0]   ; 2       ;
+; operandfetch:ID|register_array[19][4]   ; 2       ;
+; operandfetch:ID|register_array[21][4]   ; 2       ;
+; operandfetch:ID|register_array[17][4]   ; 2       ;
+; operandfetch:ID|register_array[23][4]   ; 2       ;
+; operandfetch:ID|register_array[27][4]   ; 2       ;
+; operandfetch:ID|register_array[29][4]   ; 2       ;
+; operandfetch:ID|register_array[25][4]   ; 2       ;
+; operandfetch:ID|register_array[31][4]   ; 2       ;
+; operandfetch:ID|register_array[18][4]   ; 2       ;
+; operandfetch:ID|register_array[26][4]   ; 2       ;
+; operandfetch:ID|register_array[20][4]   ; 2       ;
+; operandfetch:ID|register_array[28][4]   ; 2       ;
+; operandfetch:ID|register_array[16][4]   ; 2       ;
+; operandfetch:ID|register_array[24][4]   ; 2       ;
+; operandfetch:ID|register_array[22][4]   ; 2       ;
+; operandfetch:ID|register_array[30][4]   ; 2       ;
+; operandfetch:ID|register_array[19][1]   ; 2       ;
+; operandfetch:ID|register_array[23][1]   ; 2       ;
+; operandfetch:ID|register_array[11][1]   ; 2       ;
+; operandfetch:ID|register_array[15][1]   ; 2       ;
+; operandfetch:ID|register_array[3][1]    ; 2       ;
+; operandfetch:ID|register_array[7][1]    ; 2       ;
+; operandfetch:ID|register_array[27][1]   ; 2       ;
+; operandfetch:ID|register_array[31][1]   ; 2       ;
+; operandfetch:ID|register_array[18][1]   ; 2       ;
+; operandfetch:ID|register_array[10][1]   ; 2       ;
+; operandfetch:ID|register_array[2][1]    ; 2       ;
+; operandfetch:ID|register_array[26][1]   ; 2       ;
+; operandfetch:ID|register_array[14][1]   ; 2       ;
+; operandfetch:ID|register_array[22][1]   ; 2       ;
+; operandfetch:ID|register_array[6][1]    ; 2       ;
+; operandfetch:ID|register_array[30][1]   ; 2       ;
+; operandfetch:ID|register_array[11][3]   ; 2       ;
+; operandfetch:ID|register_array[13][3]   ; 2       ;
+; operandfetch:ID|register_array[9][3]    ; 2       ;
+; operandfetch:ID|register_array[15][3]   ; 2       ;
+; operandfetch:ID|register_array[29][3]   ; 2       ;
+; operandfetch:ID|register_array[27][3]   ; 2       ;
+; operandfetch:ID|register_array[25][3]   ; 2       ;
+; operandfetch:ID|register_array[31][3]   ; 2       ;
+; operandfetch:ID|register_array[12][3]   ; 2       ;
+; operandfetch:ID|register_array[28][3]   ; 2       ;
+; operandfetch:ID|register_array[10][3]   ; 2       ;
+; operandfetch:ID|register_array[26][3]   ; 2       ;
+; operandfetch:ID|register_array[24][3]   ; 2       ;
+; operandfetch:ID|register_array[8][3]    ; 2       ;
+; operandfetch:ID|register_array[14][3]   ; 2       ;
+; operandfetch:ID|register_array[30][3]   ; 2       ;
+; operandfetch:ID|register_array[21][2]   ; 2       ;
+; operandfetch:ID|register_array[23][2]   ; 2       ;
+; operandfetch:ID|register_array[13][2]   ; 2       ;
+; operandfetch:ID|register_array[15][2]   ; 2       ;
+; operandfetch:ID|register_array[5][2]    ; 2       ;
+; operandfetch:ID|register_array[7][2]    ; 2       ;
+; operandfetch:ID|register_array[29][2]   ; 2       ;
+; operandfetch:ID|register_array[31][2]   ; 2       ;
+; operandfetch:ID|register_array[12][2]   ; 2       ;
+; operandfetch:ID|register_array[20][2]   ; 2       ;
+; operandfetch:ID|register_array[4][2]    ; 2       ;
+; operandfetch:ID|register_array[28][2]   ; 2       ;
+; operandfetch:ID|register_array[14][2]   ; 2       ;
+; operandfetch:ID|register_array[22][2]   ; 2       ;
+; operandfetch:ID|register_array[6][2]    ; 2       ;
+; operandfetch:ID|register_array[30][2]   ; 2       ;
+; Total number of inverted registers = 80 ;         ;
++-----------------------------------------+---------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |Video_MIPS|instrfetch:IFE|PC_plus_4_p[5]       ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |Video_MIPS|LCD_Display:LCD|CLK_COUNT_400HZ[12] ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |Video_MIPS|operandfetch:ID|Instruction_pp[5]   ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |Video_MIPS|execution:EX|Write_Address_p[0]     ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |Video_MIPS|instrfetch:IFE|PC[6]                ;
+; 10:1               ; 30 bits   ; 180 LEs       ; 60 LEs               ; 120 LEs                ; Yes        ; |Video_MIPS|execution:EX|ALU_Result_p[25]       ;
+; 33:1               ; 8 bits    ; 176 LEs       ; 176 LEs              ; 0 LEs                  ; Yes        ; |Video_MIPS|operandfetch:ID|Read_Data_2_p[6]    ;
+; 33:1               ; 8 bits    ; 176 LEs       ; 176 LEs              ; 0 LEs                  ; Yes        ; |Video_MIPS|operandfetch:ID|Read_Data_1_p[2]    ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Video_MIPS|LCD_Display:LCD|DATA_BUS_VALUE[4]   ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 20 LEs               ; 0 LEs                  ; No         ; |Video_MIPS|LCD_Display:LCD|next_command~19     ;
+; 4:1                ; 24 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |Video_MIPS|execution:EX|Mux11                  ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Video_MIPS|execution:EX|Mux24                  ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Video_MIPS|LCD_Display:LCD|state~28            ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; No         ; |Video_MIPS|LCD_Display:LCD|next_command~25     ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; No         ; |Video_MIPS|execution:EX|Add0                   ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; No         ; |Video_MIPS|execution:EX|Add0                   ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 48 LEs               ; 0 LEs                  ; No         ; |Video_MIPS|execution:EX|B_input[24]            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |Video_MIPS|execution:EX|B_input[14]            ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |Video_MIPS|execution:EX|B_input[3]             ;
+; 32:1               ; 2 bits    ; 42 LEs        ; 24 LEs               ; 18 LEs                 ; No         ; |Video_MIPS|LCD_Display:LCD|Mux5                ;
+; 32:1               ; 2 bits    ; 42 LEs        ; 28 LEs               ; 14 LEs                 ; No         ; |Video_MIPS|LCD_Display:LCD|Mux3                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------+
+; Source assignments for instrfetch:IFE|altsyncram:Instr_Memory|altsyncram_r1g3:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------+
+; Assignment                      ; Value              ; From ; To                             ;
++---------------------------------+--------------------+------+--------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                              ;
++---------------------------------+--------------------+------+--------------------------------+
+
+
++--------------------------------------------------------------------------------------------+
+; Source assignments for datamemory:MEM|altsyncram:datamemory|altsyncram_1eh3:auto_generated ;
++---------------------------------+--------------------+------+------------------------------+
+; Assignment                      ; Value              ; From ; To                           ;
++---------------------------------+--------------------+------+------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                            ;
++---------------------------------+--------------------+------+------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Source assignments for LPM_ROM:format_rom|altrom:srom|altsyncram:rom_block|altsyncram_c201:auto_generated ;
++---------------------------------+--------------------+------+---------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                          ;
++---------------------------------+--------------------+------+---------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                           ;
++---------------------------------+--------------------+------+---------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for Char_ROM:CGROM|LPM_ROM:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_6401:auto_generated ;
++---------------------------------+--------------------+------+--------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                           ;
++---------------------------------+--------------------+------+--------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                            ;
++---------------------------------+--------------------+------+--------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |Video_MIPS ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; addr_width     ; 12    ; Signed Integer                                    ;
+; data_width     ; 1     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: instrfetch:IFE|altsyncram:Instr_Memory ;
++------------------------------------+------------------------+-----------------------+
+; Parameter Name                     ; Value                  ; Type                  ;
++------------------------------------+------------------------+-----------------------+
+; BYTE_SIZE_BLOCK                    ; 8                      ; Untyped               ;
+; AUTO_CARRY_CHAINS                  ; ON                     ; AUTO_CARRY            ;
+; IGNORE_CARRY_BUFFERS               ; OFF                    ; IGNORE_CARRY          ;
+; AUTO_CASCADE_CHAINS                ; ON                     ; AUTO_CASCADE          ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                    ; IGNORE_CASCADE        ;
+; WIDTH_BYTEENA                      ; 1                      ; Untyped               ;
+; OPERATION_MODE                     ; ROM                    ; Untyped               ;
+; WIDTH_A                            ; 32                     ; Signed Integer        ;
+; WIDTHAD_A                          ; 8                      ; Signed Integer        ;
+; NUMWORDS_A                         ; 0                      ; Signed Integer        ;
+; OUTDATA_REG_A                      ; UNREGISTERED           ; Untyped               ;
+; ADDRESS_ACLR_A                     ; NONE                   ; Untyped               ;
+; OUTDATA_ACLR_A                     ; NONE                   ; Untyped               ;
+; WRCONTROL_ACLR_A                   ; NONE                   ; Untyped               ;
+; INDATA_ACLR_A                      ; NONE                   ; Untyped               ;
+; BYTEENA_ACLR_A                     ; NONE                   ; Untyped               ;
+; WIDTH_B                            ; 1                      ; Signed Integer        ;
+; WIDTHAD_B                          ; 1                      ; Signed Integer        ;
+; NUMWORDS_B                         ; 0                      ; Signed Integer        ;
+; INDATA_REG_B                       ; CLOCK1                 ; Untyped               ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                 ; Untyped               ;
+; RDCONTROL_REG_B                    ; CLOCK1                 ; Untyped               ;
+; ADDRESS_REG_B                      ; CLOCK1                 ; Untyped               ;
+; OUTDATA_REG_B                      ; UNREGISTERED           ; Untyped               ;
+; BYTEENA_REG_B                      ; CLOCK1                 ; Untyped               ;
+; INDATA_ACLR_B                      ; NONE                   ; Untyped               ;
+; WRCONTROL_ACLR_B                   ; NONE                   ; Untyped               ;
+; ADDRESS_ACLR_B                     ; NONE                   ; Untyped               ;
+; OUTDATA_ACLR_B                     ; NONE                   ; Untyped               ;
+; RDCONTROL_ACLR_B                   ; NONE                   ; Untyped               ;
+; BYTEENA_ACLR_B                     ; NONE                   ; Untyped               ;
+; WIDTH_BYTEENA_A                    ; 1                      ; Signed Integer        ;
+; WIDTH_BYTEENA_B                    ; 1                      ; Signed Integer        ;
+; RAM_BLOCK_TYPE                     ; AUTO                   ; Untyped               ;
+; BYTE_SIZE                          ; 8                      ; Signed Integer        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE              ; Untyped               ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ   ; Untyped               ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ   ; Untyped               ;
+; INIT_FILE                          ; pipelining_example.mif ; Untyped               ;
+; INIT_FILE_LAYOUT                   ; PORT_A                 ; Untyped               ;
+; MAXIMUM_DEPTH                      ; 0                      ; Signed Integer        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                 ; Untyped               ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                 ; Untyped               ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                 ; Untyped               ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                 ; Untyped               ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN        ; Untyped               ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN        ; Untyped               ;
+; ENABLE_ECC                         ; FALSE                  ; Untyped               ;
+; DEVICE_FAMILY                      ; Cyclone II             ; Untyped               ;
+; CBXI_PARAMETER                     ; altsyncram_r1g3        ; Untyped               ;
++------------------------------------+------------------------+-----------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: datamemory:MEM|altsyncram:datamemory ;
++------------------------------------+----------------------+-----------------------+
+; Parameter Name                     ; Value                ; Type                  ;
++------------------------------------+----------------------+-----------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped               ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY            ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY          ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE          ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE        ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped               ;
+; OPERATION_MODE                     ; SINGLE_PORT          ; Untyped               ;
+; WIDTH_A                            ; 32                   ; Signed Integer        ;
+; WIDTHAD_A                          ; 8                    ; Signed Integer        ;
+; NUMWORDS_A                         ; 0                    ; Signed Integer        ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped               ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped               ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped               ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped               ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped               ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped               ;
+; WIDTH_B                            ; 1                    ; Signed Integer        ;
+; WIDTHAD_B                          ; 1                    ; Signed Integer        ;
+; NUMWORDS_B                         ; 0                    ; Signed Integer        ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped               ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped               ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped               ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped               ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped               ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped               ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped               ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped               ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped               ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped               ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped               ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped               ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer        ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Signed Integer        ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped               ;
+; BYTE_SIZE                          ; 8                    ; Signed Integer        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped               ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped               ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped               ;
+; INIT_FILE                          ; data_memory.mif      ; Untyped               ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped               ;
+; MAXIMUM_DEPTH                      ; 0                    ; Signed Integer        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped               ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped               ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped               ;
+; ENABLE_ECC                         ; FALSE                ; Untyped               ;
+; DEVICE_FAMILY                      ; Cyclone II           ; Untyped               ;
+; CBXI_PARAMETER                     ; altsyncram_1eh3      ; Untyped               ;
++------------------------------------+----------------------+-----------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LPM_ROM:format_rom ;
++------------------------+--------------+-------------------------+
+; Parameter Name         ; Value        ; Type                    ;
++------------------------+--------------+-------------------------+
+; LPM_WIDTH              ; 6            ; Signed Integer          ;
+; LPM_WIDTHAD            ; 6            ; Signed Integer          ;
+; LPM_NUMWORDS           ; 60           ; Signed Integer          ;
+; LPM_ADDRESS_CONTROL    ; REGISTERED   ; Untyped                 ;
+; LPM_OUTDATA            ; UNREGISTERED ; Untyped                 ;
+; LPM_FILE               ; format.mif   ; Untyped                 ;
+; DEVICE_FAMILY          ; Cyclone II   ; Untyped                 ;
+; AUTO_CARRY_CHAINS      ; ON           ; AUTO_CARRY              ;
+; IGNORE_CARRY_BUFFERS   ; OFF          ; IGNORE_CARRY            ;
+; AUTO_CASCADE_CHAINS    ; ON           ; AUTO_CASCADE            ;
+; IGNORE_CASCADE_BUFFERS ; OFF          ; IGNORE_CASCADE          ;
++------------------------+--------------+-------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: video_PLL:video_PLL_inst|altpll:altpll_component ;
++-------------------------------+-------------------+-------------------------------------------+
+; Parameter Name                ; Value             ; Type                                      ;
++-------------------------------+-------------------+-------------------------------------------+
+; OPERATION_MODE                ; NORMAL            ; Untyped                                   ;
+; PLL_TYPE                      ; FAST              ; Untyped                                   ;
+; QUALIFY_CONF_DONE             ; OFF               ; Untyped                                   ;
+; COMPENSATE_CLOCK              ; CLK0              ; Untyped                                   ;
+; SCAN_CHAIN                    ; LONG              ; Untyped                                   ;
+; PRIMARY_CLOCK                 ; INCLK0            ; Untyped                                   ;
+; INCLK0_INPUT_FREQUENCY        ; 20000             ; Signed Integer                            ;
+; INCLK1_INPUT_FREQUENCY        ; 0                 ; Untyped                                   ;
+; GATE_LOCK_SIGNAL              ; NO                ; Untyped                                   ;
+; GATE_LOCK_COUNTER             ; 0                 ; Untyped                                   ;
+; LOCK_HIGH                     ; 1                 ; Untyped                                   ;
+; LOCK_LOW                      ; 1                 ; Untyped                                   ;
+; VALID_LOCK_MULTIPLIER         ; 1                 ; Untyped                                   ;
+; INVALID_LOCK_MULTIPLIER       ; 5                 ; Untyped                                   ;
+; SWITCH_OVER_ON_LOSSCLK        ; OFF               ; Untyped                                   ;
+; SWITCH_OVER_ON_GATED_LOCK     ; OFF               ; Untyped                                   ;
+; ENABLE_SWITCH_OVER_COUNTER    ; OFF               ; Untyped                                   ;
+; SKIP_VCO                      ; OFF               ; Untyped                                   ;
+; SWITCH_OVER_COUNTER           ; 0                 ; Untyped                                   ;
+; SWITCH_OVER_TYPE              ; AUTO              ; Untyped                                   ;
+; FEEDBACK_SOURCE               ; EXTCLK0           ; Untyped                                   ;
+; BANDWIDTH                     ; 0                 ; Untyped                                   ;
+; BANDWIDTH_TYPE                ; AUTO              ; Untyped                                   ;
+; SPREAD_FREQUENCY              ; 0                 ; Untyped                                   ;
+; DOWN_SPREAD                   ; 0                 ; Untyped                                   ;
+; SELF_RESET_ON_GATED_LOSS_LOCK ; OFF               ; Untyped                                   ;
+; SELF_RESET_ON_LOSS_LOCK       ; OFF               ; Untyped                                   ;
+; CLK9_MULTIPLY_BY              ; 0                 ; Untyped                                   ;
+; CLK8_MULTIPLY_BY              ; 0                 ; Untyped                                   ;
+; CLK7_MULTIPLY_BY              ; 0                 ; Untyped                                   ;
+; CLK6_MULTIPLY_BY              ; 0                 ; Untyped                                   ;
+; CLK5_MULTIPLY_BY              ; 1                 ; Untyped                                   ;
+; CLK4_MULTIPLY_BY              ; 1                 ; Untyped                                   ;
+; CLK3_MULTIPLY_BY              ; 1                 ; Untyped                                   ;
+; CLK2_MULTIPLY_BY              ; 1                 ; Untyped                                   ;
+; CLK1_MULTIPLY_BY              ; 1                 ; Untyped                                   ;
+; CLK0_MULTIPLY_BY              ; 1                 ; Signed Integer                            ;
+; CLK9_DIVIDE_BY                ; 0                 ; Untyped                                   ;
+; CLK8_DIVIDE_BY                ; 0                 ; Untyped                                   ;
+; CLK7_DIVIDE_BY                ; 0                 ; Untyped                                   ;
+; CLK6_DIVIDE_BY                ; 0                 ; Untyped                                   ;
+; CLK5_DIVIDE_BY                ; 1                 ; Untyped                                   ;
+; CLK4_DIVIDE_BY                ; 1                 ; Untyped                                   ;
+; CLK3_DIVIDE_BY                ; 1                 ; Untyped                                   ;
+; CLK2_DIVIDE_BY                ; 1                 ; Untyped                                   ;
+; CLK1_DIVIDE_BY                ; 1                 ; Untyped                                   ;
+; CLK0_DIVIDE_BY                ; 2                 ; Signed Integer                            ;
+; CLK9_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK8_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK7_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK6_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK5_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK4_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK3_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK2_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK1_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK0_PHASE_SHIFT              ; 0                 ; Untyped                                   ;
+; CLK5_TIME_DELAY               ; 0                 ; Untyped                                   ;
+; CLK4_TIME_DELAY               ; 0                 ; Untyped                                   ;
+; CLK3_TIME_DELAY               ; 0                 ; Untyped                                   ;
+; CLK2_TIME_DELAY               ; 0                 ; Untyped                                   ;
+; CLK1_TIME_DELAY               ; 0                 ; Untyped                                   ;
+; CLK0_TIME_DELAY               ; 0                 ; Untyped                                   ;
+; CLK9_DUTY_CYCLE               ; 50                ; Untyped                                   ;
+; CLK8_DUTY_CYCLE               ; 50                ; Untyped                                   ;
+; CLK7_DUTY_CYCLE               ; 50                ; Untyped                                   ;
+; CLK6_DUTY_CYCLE               ; 50                ; Untyped                                   ;
+; CLK5_DUTY_CYCLE               ; 50                ; Untyped                                   ;
+; CLK4_DUTY_CYCLE               ; 50                ; Untyped                                   ;
+; CLK3_DUTY_CYCLE               ; 50                ; Untyped                                   ;
+; CLK2_DUTY_CYCLE               ; 50                ; Untyped                                   ;
+; CLK1_DUTY_CYCLE               ; 50                ; Untyped                                   ;
+; CLK0_DUTY_CYCLE               ; 50                ; Signed Integer                            ;
+; CLK9_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK8_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK7_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK6_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK5_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK4_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK3_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK2_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK1_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK0_USE_EVEN_COUNTER_MODE    ; OFF               ; Untyped                                   ;
+; CLK9_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; CLK8_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; CLK7_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; CLK6_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; CLK5_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; CLK4_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; CLK3_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; CLK2_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; CLK1_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; CLK0_USE_EVEN_COUNTER_VALUE   ; OFF               ; Untyped                                   ;
+; LOCK_WINDOW_UI                ;  0.05             ; Untyped                                   ;
+; LOCK_WINDOW_UI_BITS           ; UNUSED            ; Untyped                                   ;
+; VCO_RANGE_DETECTOR_LOW_BITS   ; UNUSED            ; Untyped                                   ;
+; VCO_RANGE_DETECTOR_HIGH_BITS  ; UNUSED            ; Untyped                                   ;
+; EXTCLK3_MULTIPLY_BY           ; 1                 ; Untyped                                   ;
+; EXTCLK2_MULTIPLY_BY           ; 1                 ; Untyped                                   ;
+; EXTCLK1_MULTIPLY_BY           ; 1                 ; Untyped                                   ;
+; EXTCLK0_MULTIPLY_BY           ; 1                 ; Untyped                                   ;
+; EXTCLK3_DIVIDE_BY             ; 1                 ; Untyped                                   ;
+; EXTCLK2_DIVIDE_BY             ; 1                 ; Untyped                                   ;
+; EXTCLK1_DIVIDE_BY             ; 1                 ; Untyped                                   ;
+; EXTCLK0_DIVIDE_BY             ; 1                 ; Untyped                                   ;
+; EXTCLK3_PHASE_SHIFT           ; 0                 ; Untyped                                   ;
+; EXTCLK2_PHASE_SHIFT           ; 0                 ; Untyped                                   ;
+; EXTCLK1_PHASE_SHIFT           ; 0                 ; Untyped                                   ;
+; EXTCLK0_PHASE_SHIFT           ; 0                 ; Untyped                                   ;
+; EXTCLK3_TIME_DELAY            ; 0                 ; Untyped                                   ;
+; EXTCLK2_TIME_DELAY            ; 0                 ; Untyped                                   ;
+; EXTCLK1_TIME_DELAY            ; 0                 ; Untyped                                   ;
+; EXTCLK0_TIME_DELAY            ; 0                 ; Untyped                                   ;
+; EXTCLK3_DUTY_CYCLE            ; 50                ; Untyped                                   ;
+; EXTCLK2_DUTY_CYCLE            ; 50                ; Untyped                                   ;
+; EXTCLK1_DUTY_CYCLE            ; 50                ; Untyped                                   ;
+; EXTCLK0_DUTY_CYCLE            ; 50                ; Untyped                                   ;
+; VCO_MULTIPLY_BY               ; 0                 ; Untyped                                   ;
+; VCO_DIVIDE_BY                 ; 0                 ; Untyped                                   ;
+; SCLKOUT0_PHASE_SHIFT          ; 0                 ; Untyped                                   ;
+; SCLKOUT1_PHASE_SHIFT          ; 0                 ; Untyped                                   ;
+; VCO_MIN                       ; 0                 ; Untyped                                   ;
+; VCO_MAX                       ; 0                 ; Untyped                                   ;
+; VCO_CENTER                    ; 0                 ; Untyped                                   ;
+; PFD_MIN                       ; 0                 ; Untyped                                   ;
+; PFD_MAX                       ; 0                 ; Untyped                                   ;
+; M_INITIAL                     ; 0                 ; Untyped                                   ;
+; M                             ; 0                 ; Untyped                                   ;
+; N                             ; 1                 ; Untyped                                   ;
+; M2                            ; 1                 ; Untyped                                   ;
+; N2                            ; 1                 ; Untyped                                   ;
+; SS                            ; 1                 ; Untyped                                   ;
+; C0_HIGH                       ; 0                 ; Untyped                                   ;
+; C1_HIGH                       ; 0                 ; Untyped                                   ;
+; C2_HIGH                       ; 0                 ; Untyped                                   ;
+; C3_HIGH                       ; 0                 ; Untyped                                   ;
+; C4_HIGH                       ; 0                 ; Untyped                                   ;
+; C5_HIGH                       ; 0                 ; Untyped                                   ;
+; C6_HIGH                       ; 0                 ; Untyped                                   ;
+; C7_HIGH                       ; 0                 ; Untyped                                   ;
+; C8_HIGH                       ; 0                 ; Untyped                                   ;
+; C9_HIGH                       ; 0                 ; Untyped                                   ;
+; C0_LOW                        ; 0                 ; Untyped                                   ;
+; C1_LOW                        ; 0                 ; Untyped                                   ;
+; C2_LOW                        ; 0                 ; Untyped                                   ;
+; C3_LOW                        ; 0                 ; Untyped                                   ;
+; C4_LOW                        ; 0                 ; Untyped                                   ;
+; C5_LOW                        ; 0                 ; Untyped                                   ;
+; C6_LOW                        ; 0                 ; Untyped                                   ;
+; C7_LOW                        ; 0                 ; Untyped                                   ;
+; C8_LOW                        ; 0                 ; Untyped                                   ;
+; C9_LOW                        ; 0                 ; Untyped                                   ;
+; C0_INITIAL                    ; 0                 ; Untyped                                   ;
+; C1_INITIAL                    ; 0                 ; Untyped                                   ;
+; C2_INITIAL                    ; 0                 ; Untyped                                   ;
+; C3_INITIAL                    ; 0                 ; Untyped                                   ;
+; C4_INITIAL                    ; 0                 ; Untyped                                   ;
+; C5_INITIAL                    ; 0                 ; Untyped                                   ;
+; C6_INITIAL                    ; 0                 ; Untyped                                   ;
+; C7_INITIAL                    ; 0                 ; Untyped                                   ;
+; C8_INITIAL                    ; 0                 ; Untyped                                   ;
+; C9_INITIAL                    ; 0                 ; Untyped                                   ;
+; C0_MODE                       ; BYPASS            ; Untyped                                   ;
+; C1_MODE                       ; BYPASS            ; Untyped                                   ;
+; C2_MODE                       ; BYPASS            ; Untyped                                   ;
+; C3_MODE                       ; BYPASS            ; Untyped                                   ;
+; C4_MODE                       ; BYPASS            ; Untyped                                   ;
+; C5_MODE                       ; BYPASS            ; Untyped                                   ;
+; C6_MODE                       ; BYPASS            ; Untyped                                   ;
+; C7_MODE                       ; BYPASS            ; Untyped                                   ;
+; C8_MODE                       ; BYPASS            ; Untyped                                   ;
+; C9_MODE                       ; BYPASS            ; Untyped                                   ;
+; C0_PH                         ; 0                 ; Untyped                                   ;
+; C1_PH                         ; 0                 ; Untyped                                   ;
+; C2_PH                         ; 0                 ; Untyped                                   ;
+; C3_PH                         ; 0                 ; Untyped                                   ;
+; C4_PH                         ; 0                 ; Untyped                                   ;
+; C5_PH                         ; 0                 ; Untyped                                   ;
+; C6_PH                         ; 0                 ; Untyped                                   ;
+; C7_PH                         ; 0                 ; Untyped                                   ;
+; C8_PH                         ; 0                 ; Untyped                                   ;
+; C9_PH                         ; 0                 ; Untyped                                   ;
+; L0_HIGH                       ; 1                 ; Untyped                                   ;
+; L1_HIGH                       ; 1                 ; Untyped                                   ;
+; G0_HIGH                       ; 1                 ; Untyped                                   ;
+; G1_HIGH                       ; 1                 ; Untyped                                   ;
+; G2_HIGH                       ; 1                 ; Untyped                                   ;
+; G3_HIGH                       ; 1                 ; Untyped                                   ;
+; E0_HIGH                       ; 1                 ; Untyped                                   ;
+; E1_HIGH                       ; 1                 ; Untyped                                   ;
+; E2_HIGH                       ; 1                 ; Untyped                                   ;
+; E3_HIGH                       ; 1                 ; Untyped                                   ;
+; L0_LOW                        ; 1                 ; Untyped                                   ;
+; L1_LOW                        ; 1                 ; Untyped                                   ;
+; G0_LOW                        ; 1                 ; Untyped                                   ;
+; G1_LOW                        ; 1                 ; Untyped                                   ;
+; G2_LOW                        ; 1                 ; Untyped                                   ;
+; G3_LOW                        ; 1                 ; Untyped                                   ;
+; E0_LOW                        ; 1                 ; Untyped                                   ;
+; E1_LOW                        ; 1                 ; Untyped                                   ;
+; E2_LOW                        ; 1                 ; Untyped                                   ;
+; E3_LOW                        ; 1                 ; Untyped                                   ;
+; L0_INITIAL                    ; 1                 ; Untyped                                   ;
+; L1_INITIAL                    ; 1                 ; Untyped                                   ;
+; G0_INITIAL                    ; 1                 ; Untyped                                   ;
+; G1_INITIAL                    ; 1                 ; Untyped                                   ;
+; G2_INITIAL                    ; 1                 ; Untyped                                   ;
+; G3_INITIAL                    ; 1                 ; Untyped                                   ;
+; E0_INITIAL                    ; 1                 ; Untyped                                   ;
+; E1_INITIAL                    ; 1                 ; Untyped                                   ;
+; E2_INITIAL                    ; 1                 ; Untyped                                   ;
+; E3_INITIAL                    ; 1                 ; Untyped                                   ;
+; L0_MODE                       ; BYPASS            ; Untyped                                   ;
+; L1_MODE                       ; BYPASS            ; Untyped                                   ;
+; G0_MODE                       ; BYPASS            ; Untyped                                   ;
+; G1_MODE                       ; BYPASS            ; Untyped                                   ;
+; G2_MODE                       ; BYPASS            ; Untyped                                   ;
+; G3_MODE                       ; BYPASS            ; Untyped                                   ;
+; E0_MODE                       ; BYPASS            ; Untyped                                   ;
+; E1_MODE                       ; BYPASS            ; Untyped                                   ;
+; E2_MODE                       ; BYPASS            ; Untyped                                   ;
+; E3_MODE                       ; BYPASS            ; Untyped                                   ;
+; L0_PH                         ; 0                 ; Untyped                                   ;
+; L1_PH                         ; 0                 ; Untyped                                   ;
+; G0_PH                         ; 0                 ; Untyped                                   ;
+; G1_PH                         ; 0                 ; Untyped                                   ;
+; G2_PH                         ; 0                 ; Untyped                                   ;
+; G3_PH                         ; 0                 ; Untyped                                   ;
+; E0_PH                         ; 0                 ; Untyped                                   ;
+; E1_PH                         ; 0                 ; Untyped                                   ;
+; E2_PH                         ; 0                 ; Untyped                                   ;
+; E3_PH                         ; 0                 ; Untyped                                   ;
+; M_PH                          ; 0                 ; Untyped                                   ;
+; C1_USE_CASC_IN                ; OFF               ; Untyped                                   ;
+; C2_USE_CASC_IN                ; OFF               ; Untyped                                   ;
+; C3_USE_CASC_IN                ; OFF               ; Untyped                                   ;
+; C4_USE_CASC_IN                ; OFF               ; Untyped                                   ;
+; C5_USE_CASC_IN                ; OFF               ; Untyped                                   ;
+; C6_USE_CASC_IN                ; OFF               ; Untyped                                   ;
+; C7_USE_CASC_IN                ; OFF               ; Untyped                                   ;
+; C8_USE_CASC_IN                ; OFF               ; Untyped                                   ;
+; C9_USE_CASC_IN                ; OFF               ; Untyped                                   ;
+; CLK0_COUNTER                  ; G0                ; Untyped                                   ;
+; CLK1_COUNTER                  ; G0                ; Untyped                                   ;
+; CLK2_COUNTER                  ; G0                ; Untyped                                   ;
+; CLK3_COUNTER                  ; G0                ; Untyped                                   ;
+; CLK4_COUNTER                  ; G0                ; Untyped                                   ;
+; CLK5_COUNTER                  ; G0                ; Untyped                                   ;
+; CLK6_COUNTER                  ; E0                ; Untyped                                   ;
+; CLK7_COUNTER                  ; E1                ; Untyped                                   ;
+; CLK8_COUNTER                  ; E2                ; Untyped                                   ;
+; CLK9_COUNTER                  ; E3                ; Untyped                                   ;
+; L0_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; L1_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; G0_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; G1_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; G2_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; G3_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; E0_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; E1_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; E2_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; E3_TIME_DELAY                 ; 0                 ; Untyped                                   ;
+; M_TIME_DELAY                  ; 0                 ; Untyped                                   ;
+; N_TIME_DELAY                  ; 0                 ; Untyped                                   ;
+; EXTCLK3_COUNTER               ; E3                ; Untyped                                   ;
+; EXTCLK2_COUNTER               ; E2                ; Untyped                                   ;
+; EXTCLK1_COUNTER               ; E1                ; Untyped                                   ;
+; EXTCLK0_COUNTER               ; E0                ; Untyped                                   ;
+; ENABLE0_COUNTER               ; L0                ; Untyped                                   ;
+; ENABLE1_COUNTER               ; L0                ; Untyped                                   ;
+; CHARGE_PUMP_CURRENT           ; 2                 ; Untyped                                   ;
+; LOOP_FILTER_R                 ;  1.000000         ; Untyped                                   ;
+; LOOP_FILTER_C                 ; 5                 ; Untyped                                   ;
+; CHARGE_PUMP_CURRENT_BITS      ; 9999              ; Untyped                                   ;
+; LOOP_FILTER_R_BITS            ; 9999              ; Untyped                                   ;
+; LOOP_FILTER_C_BITS            ; 9999              ; Untyped                                   ;
+; VCO_POST_SCALE                ; 0                 ; Untyped                                   ;
+; CLK2_OUTPUT_FREQUENCY         ; 0                 ; Untyped                                   ;
+; CLK1_OUTPUT_FREQUENCY         ; 0                 ; Untyped                                   ;
+; CLK0_OUTPUT_FREQUENCY         ; 0                 ; Untyped                                   ;
+; INTENDED_DEVICE_FAMILY        ; Cyclone II        ; Untyped                                   ;
+; PORT_CLKENA0                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLKENA1                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLKENA2                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLKENA3                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLKENA4                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLKENA5                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_EXTCLKENA0               ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_EXTCLKENA1               ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_EXTCLKENA2               ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_EXTCLKENA3               ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_EXTCLK0                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_EXTCLK1                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_EXTCLK2                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_EXTCLK3                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLKBAD0                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLKBAD1                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK0                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK1                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK2                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK3                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK4                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK5                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK6                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK7                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK8                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLK9                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCANDATA                 ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCANDATAOUT              ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCANDONE                 ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCLKOUT1                 ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCLKOUT0                 ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_ACTIVECLOCK              ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLKLOSS                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_INCLK1                   ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_INCLK0                   ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_FBIN                     ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_PLLENA                   ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CLKSWITCH                ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_ARESET                   ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_PFDENA                   ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCANCLK                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCANACLR                 ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCANREAD                 ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCANWRITE                ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_ENABLE0                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_ENABLE1                  ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_LOCKED                   ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_CONFIGUPDATE             ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_FBOUT                    ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_PHASEDONE                ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_PHASESTEP                ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_PHASEUPDOWN              ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_SCANCLKENA               ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_PHASECOUNTERSELECT       ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_VCOOVERRANGE             ; PORT_CONNECTIVITY ; Untyped                                   ;
+; PORT_VCOUNDERRANGE            ; PORT_CONNECTIVITY ; Untyped                                   ;
+; M_TEST_SOURCE                 ; 5                 ; Untyped                                   ;
+; C0_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; C1_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; C2_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; C3_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; C4_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; C5_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; C6_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; C7_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; C8_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; C9_TEST_SOURCE                ; 5                 ; Untyped                                   ;
+; CBXI_PARAMETER                ; NOTHING           ; Untyped                                   ;
+; VCO_FREQUENCY_CONTROL         ; AUTO              ; Untyped                                   ;
+; VCO_PHASE_SHIFT_STEP          ; 0                 ; Untyped                                   ;
+; WIDTH_CLOCK                   ; 6                 ; Untyped                                   ;
+; WIDTH_PHASECOUNTERSELECT      ; 4                 ; Untyped                                   ;
+; USING_FBMIMICBIDIR_PORT       ; OFF               ; Untyped                                   ;
+; DEVICE_FAMILY                 ; Cyclone II        ; Untyped                                   ;
+; SCAN_CHAIN_MIF_FILE           ; UNUSED            ; Untyped                                   ;
+; AUTO_CARRY_CHAINS             ; ON                ; AUTO_CARRY                                ;
+; IGNORE_CARRY_BUFFERS          ; OFF               ; IGNORE_CARRY                              ;
+; AUTO_CASCADE_CHAINS           ; ON                ; AUTO_CASCADE                              ;
+; IGNORE_CASCADE_BUFFERS        ; OFF               ; IGNORE_CASCADE                            ;
++-------------------------------+-------------------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Char_ROM:CGROM|LPM_ROM:char_gen_rom ;
++------------------------+--------------+------------------------------------------+
+; Parameter Name         ; Value        ; Type                                     ;
++------------------------+--------------+------------------------------------------+
+; LPM_WIDTH              ; 8            ; Signed Integer                           ;
+; LPM_WIDTHAD            ; 9            ; Signed Integer                           ;
+; LPM_NUMWORDS           ; 512          ; Signed Integer                           ;
+; LPM_ADDRESS_CONTROL    ; REGISTERED   ; Untyped                                  ;
+; LPM_OUTDATA            ; UNREGISTERED ; Untyped                                  ;
+; LPM_FILE               ; tcgrom.mif   ; Untyped                                  ;
+; DEVICE_FAMILY          ; Cyclone II   ; Untyped                                  ;
+; AUTO_CARRY_CHAINS      ; ON           ; AUTO_CARRY                               ;
+; IGNORE_CARRY_BUFFERS   ; OFF          ; IGNORE_CARRY                             ;
+; AUTO_CASCADE_CHAINS    ; ON           ; AUTO_CASCADE                             ;
+; IGNORE_CASCADE_BUFFERS ; OFF          ; IGNORE_CASCADE                           ;
++------------------------+--------------+------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: LCD_Display:LCD ;
++----------------+-------+-------------------------------------+
+; Parameter Name ; Value ; Type                                ;
++----------------+-------+-------------------------------------+
+; num_hex_digits ; 11    ; Signed Integer                      ;
++----------------+-------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings Tables in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 7.2 Build 151 09/26/2007 SJ Full Version
+    Info: Processing started: Thu Mar 26 02:34:03 2015
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Video_MIPS -c Video_MIPS
+Info: Found 2 design units, including 1 entities, in source file pipe_control_unit.vhd
+    Info: Found design unit 1: controlunit-behavior
+    Info: Found entity 1: controlunit
+Info: Found 2 design units, including 1 entities, in source file pipe_data_memory.vhd
+    Info: Found design unit 1: datamemory-behavior
+    Info: Found entity 1: datamemory
+Info: Found 1 design units, including 0 entities, in source file pipe_definitions.vhd
+    Info: Found design unit 1: definitions
+Info: Found 2 design units, including 1 entities, in source file pipe_execution_unit.vhd
+    Info: Found design unit 1: execution-behavior
+    Info: Found entity 1: execution
+Info: Found 2 design units, including 1 entities, in source file pipe_instr_fetch.vhd
+    Info: Found design unit 1: instrfetch-behavior
+    Info: Found entity 1: instrfetch
+Info: Found 2 design units, including 1 entities, in source file pipe_operand_fetch.vhd
+    Info: Found design unit 1: operandfetch-behavior
+    Info: Found entity 1: operandfetch
+Info: Found 2 design units, including 1 entities, in source file video_PLL.vhd
+    Info: Found design unit 1: video_pll-SYN
+    Info: Found entity 1: video_PLL
+Info: Found 2 design units, including 1 entities, in source file lcd_display.vhd
+    Info: Found design unit 1: LCD_Display-a
+    Info: Found entity 1: LCD_Display
+Info: Found 2 design units, including 1 entities, in source file CHAR_ROM.VHD
+    Info: Found design unit 1: Char_ROM-a
+    Info: Found entity 1: Char_ROM
+Info: Found 2 design units, including 1 entities, in source file CONTROL.VHD
+    Info: Found design unit 1: control-behavior
+    Info: Found entity 1: control
+Info: Found 2 design units, including 1 entities, in source file DEBOUNCE.VHD
+    Info: Found design unit 1: debounce-a
+    Info: Found entity 1: debounce
+Info: Found 2 design units, including 1 entities, in source file DMEMORY.VHD
+    Info: Found design unit 1: dmemory-behavior
+    Info: Found entity 1: dmemory
+Info: Found 2 design units, including 1 entities, in source file EXECUTE.VHD
+    Info: Found design unit 1: Execute-behavior
+    Info: Found entity 1: Execute
+Info: Found 2 design units, including 1 entities, in source file IDECODE.VHD
+    Info: Found design unit 1: Idecode-behavior
+    Info: Found entity 1: Idecode
+Info: Found 2 design units, including 1 entities, in source file IFETCH.VHD
+    Info: Found design unit 1: Ifetch-behavior
+    Info: Found entity 1: Ifetch
+Info: Found 2 design units, including 1 entities, in source file ONEPULSE.VHD
+    Info: Found design unit 1: onepulse-a
+    Info: Found entity 1: onepulse
+Info: Found 2 design units, including 1 entities, in source file VGA_SYNC.VHD
+    Info: Found design unit 1: VGA_SYNC-a
+    Info: Found entity 1: VGA_SYNC
+Warning: Using design file Video_MIPS.vhd, which is not specified as a design file for the current project, but contains definitions for 3 design units and 1 entities in project
+    Info: Found design unit 1: up3core
+    Info: Found design unit 2: Video_MIPS-behavior
+    Info: Found entity 1: Video_MIPS
+Info: Elaborating entity "Video_MIPS" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(285): object "Instruction_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(290): object "ALU_Input_1_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(291): object "ALU_Input_2_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(296): object "Zero_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(298): object "MemRead_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(299): object "MemReadData_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(300): object "MemWrite_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(301): object "Mem_Address_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(302): object "MemWrite_Data_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(304): object "RegWrite_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(305): object "WriteRegister_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(306): object "RegWriteData_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(313): object "IF_Flush_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(314): object "IF_ReadData1_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(315): object "IF_ReadData2_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(316): object "IF_SignExtend_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(317): object "IF_Branch_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(318): object "IF_BranchNE_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(319): object "IF_PCPlus4_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(320): object "IF_AddResult_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(321): object "IF_Zero_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(333): object "Branch_pp" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(335): object "Branch_NE_pp" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(353): object "NXT_PC" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(375): object "EXMEMRegWrite" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(376): object "EXMEMALU_Result" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(377): object "EXMEMRegister_Rd" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(378): object "MEMWBRegWrite" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(379): object "MEMWBRegister_Rd" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(380): object "MEMWBRead_Data" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(381): object "IDEXRegister_Rs" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(382): object "IDEXRegister_Rt" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(385): object "IDEXMemRead_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(386): object "IDEXRegister_Rt_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(387): object "IFIDRegister_Rs_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(388): object "IFIDRegister_Rt_out" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(394): object "IF_Flush_ppp" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Video_MIPS.vhd(421): object "PBSWITCH_7_sync" assigned a value but never read
+Info: Elaborating entity "instrfetch" for hierarchy "instrfetch:IFE"
+Info: Found 1 design units, including 1 entities, in source file ../../../../altera/72/quartus/libraries/megafunctions/altsyncram.tdf
+    Info: Found entity 1: altsyncram
+Info: Elaborating entity "altsyncram" for hierarchy "instrfetch:IFE|altsyncram:Instr_Memory"
+Info: Elaborated megafunction instantiation "instrfetch:IFE|altsyncram:Instr_Memory"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_r1g3.tdf
+    Info: Found entity 1: altsyncram_r1g3
+Info: Elaborating entity "altsyncram_r1g3" for hierarchy "instrfetch:IFE|altsyncram:Instr_Memory|altsyncram_r1g3:auto_generated"
+Info: Elaborating entity "operandfetch" for hierarchy "operandfetch:ID"
+Warning (10036): Verilog HDL or VHDL warning at pipe_operand_fetch.vhd(72): object "instruction" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at pipe_operand_fetch.vhd(77): object "bne" assigned a value but never read
+Warning (10034): Output port "Add_Result_p[31]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[30]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[29]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[28]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[27]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[26]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[25]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[24]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[23]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[22]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[21]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[20]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[19]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[18]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[17]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[16]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[15]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[14]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[13]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[12]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[11]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[10]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[9]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[8]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[7]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[6]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[5]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[4]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[3]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[2]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[1]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10034): Output port "Add_Result_p[0]" at pipe_operand_fetch.vhd(45) has no driver
+Warning (10873): Using initial value X (don't care) for net "sign_extend[31]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[30]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[29]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[28]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[27]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[26]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[25]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[24]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[23]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[22]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[21]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[20]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[19]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[18]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[17]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "sign_extend[16]" at pipe_operand_fetch.vhd(68)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[31]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[30]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[29]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[28]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[27]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[26]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[25]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[24]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[23]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[22]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[21]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[20]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[19]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[18]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[17]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[16]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[15]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[14]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[13]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[12]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[11]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[10]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[9]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_1[8]" at pipe_operand_fetch.vhd(69)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[31]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[30]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[29]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[28]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[27]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[26]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[25]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[24]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[23]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[22]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[21]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[20]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[19]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[18]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[17]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[16]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[15]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[14]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[13]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[12]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[11]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[10]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[9]" at pipe_operand_fetch.vhd(70)
+Warning (10873): Using initial value X (don't care) for net "read_data_2[8]" at pipe_operand_fetch.vhd(70)
+Info: Elaborating entity "controlunit" for hierarchy "controlunit:CTRL"
+Warning (10492): VHDL Process Statement warning at pipe_control_unit.vhd(70): signal "IDEX_MemRead" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at pipe_control_unit.vhd(71): signal "IDEX_Register_Rt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at pipe_control_unit.vhd(71): signal "IFID_Register_Rs" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at pipe_control_unit.vhd(72): signal "IDEX_Register_Rt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at pipe_control_unit.vhd(72): signal "IFID_Register_Rt" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info: Elaborating entity "execution" for hierarchy "execution:EX"
+Info: Elaborating entity "datamemory" for hierarchy "datamemory:MEM"
+Warning (10036): Verilog HDL or VHDL warning at pipe_data_memory.vhd(34): object "LPM_WRITE" assigned a value but never read
+Info: Elaborating entity "altsyncram" for hierarchy "datamemory:MEM|altsyncram:datamemory"
+Info: Elaborated megafunction instantiation "datamemory:MEM|altsyncram:datamemory"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_1eh3.tdf
+    Info: Found entity 1: altsyncram_1eh3
+Info: Elaborating entity "altsyncram_1eh3" for hierarchy "datamemory:MEM|altsyncram:datamemory|altsyncram_1eh3:auto_generated"
+Info: Found 1 design units, including 1 entities, in source file ../../../../altera/72/quartus/libraries/megafunctions/LPM_ROM.tdf
+    Info: Found entity 1: lpm_rom
+Info: Elaborating entity "LPM_ROM" for hierarchy "LPM_ROM:format_rom"
+Info: Elaborated megafunction instantiation "LPM_ROM:format_rom"
+Info: Found 1 design units, including 1 entities, in source file ../../../../altera/72/quartus/libraries/megafunctions/altrom.tdf
+    Info: Found entity 1: altrom
+Info: Elaborating entity "altrom" for hierarchy "LPM_ROM:format_rom|altrom:srom"
+Warning: Assertion warning: altrom does not support Cyclone II device family -- attempting best-case memory conversions, but power-up states will be different for Cyclone II devices
+Info: Elaborated megafunction instantiation "LPM_ROM:format_rom|altrom:srom", which is child of megafunction instantiation "LPM_ROM:format_rom"
+Info: Instantiated megafunction "LPM_ROM:format_rom" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "6"
+    Info: Parameter "LPM_WIDTHAD" = "6"
+    Info: Parameter "LPM_NUMWORDS" = "60"
+    Info: Parameter "LPM_ADDRESS_CONTROL" = "REGISTERED"
+    Info: Parameter "LPM_OUTDATA" = "UNREGISTERED"
+    Info: Parameter "LPM_FILE" = "format.mif"
+    Info: Parameter "LPM_TYPE" = "LPM_ROM"
+    Info: Parameter "INTENDED_DEVICE_FAMILY" = "UNUSED"
+    Info: Parameter "LPM_HINT" = "UNUSED"
+Info: Elaborating entity "altsyncram" for hierarchy "LPM_ROM:format_rom|altrom:srom|altsyncram:rom_block"
+Info: Elaborated megafunction instantiation "LPM_ROM:format_rom|altrom:srom|altsyncram:rom_block", which is child of megafunction instantiation "LPM_ROM:format_rom"
+Info: Instantiated megafunction "LPM_ROM:format_rom" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "6"
+    Info: Parameter "LPM_WIDTHAD" = "6"
+    Info: Parameter "LPM_NUMWORDS" = "60"
+    Info: Parameter "LPM_ADDRESS_CONTROL" = "REGISTERED"
+    Info: Parameter "LPM_OUTDATA" = "UNREGISTERED"
+    Info: Parameter "LPM_FILE" = "format.mif"
+    Info: Parameter "LPM_TYPE" = "LPM_ROM"
+    Info: Parameter "INTENDED_DEVICE_FAMILY" = "UNUSED"
+    Info: Parameter "LPM_HINT" = "UNUSED"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_c201.tdf
+    Info: Found entity 1: altsyncram_c201
+Info: Elaborating entity "altsyncram_c201" for hierarchy "LPM_ROM:format_rom|altrom:srom|altsyncram:rom_block|altsyncram_c201:auto_generated"
+Info: Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:SYNC"
+Info: Elaborating entity "video_PLL" for hierarchy "video_PLL:video_PLL_inst"
+Info: Found 1 design units, including 1 entities, in source file ../../../../altera/72/quartus/libraries/megafunctions/altpll.tdf
+    Info: Found entity 1: altpll
+Info: Elaborating entity "altpll" for hierarchy "video_PLL:video_PLL_inst|altpll:altpll_component"
+Info: Elaborated megafunction instantiation "video_PLL:video_PLL_inst|altpll:altpll_component"
+Info: Elaborating entity "Char_ROM" for hierarchy "Char_ROM:CGROM"
+Info: Elaborating entity "LPM_ROM" for hierarchy "Char_ROM:CGROM|LPM_ROM:char_gen_rom"
+Info: Elaborated megafunction instantiation "Char_ROM:CGROM|LPM_ROM:char_gen_rom"
+Info: Elaborating entity "altrom" for hierarchy "Char_ROM:CGROM|LPM_ROM:char_gen_rom|altrom:srom"
+Warning: Assertion warning: altrom does not support Cyclone II device family -- attempting best-case memory conversions, but power-up states will be different for Cyclone II devices
+Info: Elaborated megafunction instantiation "Char_ROM:CGROM|LPM_ROM:char_gen_rom|altrom:srom", which is child of megafunction instantiation "Char_ROM:CGROM|LPM_ROM:char_gen_rom"
+Info: Instantiated megafunction "Char_ROM:CGROM|LPM_ROM:char_gen_rom" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "8"
+    Info: Parameter "LPM_WIDTHAD" = "9"
+    Info: Parameter "LPM_NUMWORDS" = "512"
+    Info: Parameter "LPM_ADDRESS_CONTROL" = "REGISTERED"
+    Info: Parameter "LPM_OUTDATA" = "UNREGISTERED"
+    Info: Parameter "LPM_FILE" = "tcgrom.mif"
+    Info: Parameter "LPM_TYPE" = "LPM_ROM"
+    Info: Parameter "INTENDED_DEVICE_FAMILY" = "UNUSED"
+    Info: Parameter "LPM_HINT" = "UNUSED"
+Info: Elaborating entity "altsyncram" for hierarchy "Char_ROM:CGROM|LPM_ROM:char_gen_rom|altrom:srom|altsyncram:rom_block"
+Info: Elaborated megafunction instantiation "Char_ROM:CGROM|LPM_ROM:char_gen_rom|altrom:srom|altsyncram:rom_block", which is child of megafunction instantiation "Char_ROM:CGROM|LPM_ROM:char_gen_rom"
+Info: Instantiated megafunction "Char_ROM:CGROM|LPM_ROM:char_gen_rom" with the following parameter:
+    Info: Parameter "LPM_WIDTH" = "8"
+    Info: Parameter "LPM_WIDTHAD" = "9"
+    Info: Parameter "LPM_NUMWORDS" = "512"
+    Info: Parameter "LPM_ADDRESS_CONTROL" = "REGISTERED"
+    Info: Parameter "LPM_OUTDATA" = "UNREGISTERED"
+    Info: Parameter "LPM_FILE" = "tcgrom.mif"
+    Info: Parameter "LPM_TYPE" = "LPM_ROM"
+    Info: Parameter "INTENDED_DEVICE_FAMILY" = "UNUSED"
+    Info: Parameter "LPM_HINT" = "UNUSED"
+Info: Found 1 design units, including 1 entities, in source file db/altsyncram_6401.tdf
+    Info: Found entity 1: altsyncram_6401
+Info: Elaborating entity "altsyncram_6401" for hierarchy "Char_ROM:CGROM|LPM_ROM:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_6401:auto_generated"
+Info: Elaborating entity "debounce" for hierarchy "debounce:DB1"
+Info: Elaborating entity "onepulse" for hierarchy "onepulse:SP1"
+Info: Elaborating entity "LCD_Display" for hierarchy "LCD_Display:LCD"
+Info: Power-up level of register "onepulse:SP1|Power_on" is not specified -- using power-up level of High to minimize register
+Warning (14130): Reduced register "onepulse:SP1|Power_on" with stuck data_in port to stuck value VCC
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[16]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[17]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[18]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[19]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[20]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[21]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[22]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[23]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[24]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[25]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[26]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[27]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[28]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[29]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[30]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Sign_Extend_p[31]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[8]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[9]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[13]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[14]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[16]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[17]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[18]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[19]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[20]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[21]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[22]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[23]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[24]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[25]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[26]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[27]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[28]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[29]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[30]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_2_p[31]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[8]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[9]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[13]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[14]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[16]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[17]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[18]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[19]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[20]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[21]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[22]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[23]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[24]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[25]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[26]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[27]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[28]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[29]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[30]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "operandfetch:ID|Read_Data_1_p[31]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "instrfetch:IFE|PC[0]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "instrfetch:IFE|PC[1]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[8]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[9]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[10]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[11]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[12]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[13]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[14]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[15]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[16]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[17]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[18]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[19]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[20]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[21]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[22]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[23]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[24]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[25]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[26]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[27]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[28]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[29]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[30]" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "execution:EX|Read_Data_2_pp[31]" with stuck data_in port to stuck value GND
+Warning: Converted TRI buffer or tri-state bus to logic, or removed OPNDRN
+    Warning: Converting TRI node "Char_ROM:CGROM|lpm_rom:char_gen_rom|otri[7]" that feeds logic to a wire
+    Warning: Converting TRI node "Char_ROM:CGROM|lpm_rom:char_gen_rom|otri[6]" that feeds logic to a wire
+    Warning: Converting TRI node "Char_ROM:CGROM|lpm_rom:char_gen_rom|otri[5]" that feeds logic to a wire
+    Warning: Converting TRI node "Char_ROM:CGROM|lpm_rom:char_gen_rom|otri[4]" that feeds logic to a wire
+    Warning: Converting TRI node "Char_ROM:CGROM|lpm_rom:char_gen_rom|otri[3]" that feeds logic to a wire
+    Warning: Converting TRI node "Char_ROM:CGROM|lpm_rom:char_gen_rom|otri[2]" that feeds logic to a wire
+    Warning: Converting TRI node "Char_ROM:CGROM|lpm_rom:char_gen_rom|otri[1]" that feeds logic to a wire
+    Warning: Converting TRI node "Char_ROM:CGROM|lpm_rom:char_gen_rom|otri[0]" that feeds logic to a wire
+    Warning: Converting TRI node "lpm_rom:format_rom|otri[5]" that feeds logic to a wire
+    Warning: Converting TRI node "lpm_rom:format_rom|otri[4]" that feeds logic to a wire
+    Warning: Converting TRI node "lpm_rom:format_rom|otri[3]" that feeds logic to a wire
+    Warning: Converting TRI node "lpm_rom:format_rom|otri[2]" that feeds logic to a wire
+    Warning: Converting TRI node "lpm_rom:format_rom|otri[1]" that feeds logic to a wire
+    Warning: Converting TRI node "lpm_rom:format_rom|otri[0]" that feeds logic to a wire
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "controlunit:CTRL|MemRead_p" merged to single register "controlunit:CTRL|MemtoReg_p"
+    Info: Duplicate register "controlunit:CTRL|ALU_Op_p[1]" merged to single register "controlunit:CTRL|RegDst_p"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[0]" merged to single register "operandfetch:ID|Instruction_pp[0]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[1]" merged to single register "operandfetch:ID|Instruction_pp[1]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[2]" merged to single register "operandfetch:ID|Instruction_pp[2]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[3]" merged to single register "operandfetch:ID|Instruction_pp[3]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[4]" merged to single register "operandfetch:ID|Instruction_pp[4]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[5]" merged to single register "operandfetch:ID|Instruction_pp[5]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[6]" merged to single register "operandfetch:ID|Instruction_pp[6]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[7]" merged to single register "operandfetch:ID|Instruction_pp[7]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[8]" merged to single register "operandfetch:ID|Instruction_pp[8]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[9]" merged to single register "operandfetch:ID|Instruction_pp[9]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[10]" merged to single register "operandfetch:ID|Instruction_pp[10]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_1_p[0]" merged to single register "operandfetch:ID|Instruction_pp[11]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[11]" merged to single register "operandfetch:ID|Instruction_pp[11]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_1_p[1]" merged to single register "operandfetch:ID|Instruction_pp[12]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[12]" merged to single register "operandfetch:ID|Instruction_pp[12]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_1_p[2]" merged to single register "operandfetch:ID|Instruction_pp[13]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[13]" merged to single register "operandfetch:ID|Instruction_pp[13]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_1_p[3]" merged to single register "operandfetch:ID|Instruction_pp[14]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[14]" merged to single register "operandfetch:ID|Instruction_pp[14]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_1_p[4]" merged to single register "operandfetch:ID|Instruction_pp[15]"
+    Info: Duplicate register "operandfetch:ID|Sign_Extend_p[15]" merged to single register "operandfetch:ID|Instruction_pp[15]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_0_p[0]" merged to single register "operandfetch:ID|Instruction_pp[16]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_0_p[1]" merged to single register "operandfetch:ID|Instruction_pp[17]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_0_p[2]" merged to single register "operandfetch:ID|Instruction_pp[18]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_0_p[3]" merged to single register "operandfetch:ID|Instruction_pp[19]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_0_p[4]" merged to single register "operandfetch:ID|Instruction_pp[20]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_2_p[0]" merged to single register "operandfetch:ID|Instruction_pp[21]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_2_p[1]" merged to single register "operandfetch:ID|Instruction_pp[22]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_2_p[2]" merged to single register "operandfetch:ID|Instruction_pp[23]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_2_p[3]" merged to single register "operandfetch:ID|Instruction_pp[24]"
+    Info: Duplicate register "operandfetch:ID|Write_Address_2_p[4]" merged to single register "operandfetch:ID|Instruction_pp[25]"
+Info: Duplicate registers merged to single register
+    Info: Duplicate register "VGA_SYNC:SYNC|green_out" merged to single register "VGA_SYNC:SYNC|red_out"
+    Info: Duplicate register "controlunit:CTRL|IF_Flush" merged to single register "controlunit:CTRL|ALU_Op_p[0]"
+Warning (14110): No clock transition on "operandfetch:ID|register_array[0][0]" register due to stuck clock or clock enable
+Warning (14130): Reduced register "operandfetch:ID|register_array[0][0]" with stuck clock_enable port to stuck value GND
+Warning (14110): No clock transition on "operandfetch:ID|register_array[0][1]" register due to stuck clock or clock enable
+Warning (14130): Reduced register "operandfetch:ID|register_array[0][1]" with stuck clock_enable port to stuck value GND
+Warning (14110): No clock transition on "operandfetch:ID|register_array[0][2]" register due to stuck clock or clock enable
+Warning (14130): Reduced register "operandfetch:ID|register_array[0][2]" with stuck clock_enable port to stuck value GND
+Warning (14110): No clock transition on "operandfetch:ID|register_array[0][3]" register due to stuck clock or clock enable
+Warning (14130): Reduced register "operandfetch:ID|register_array[0][3]" with stuck clock_enable port to stuck value GND
+Warning (14110): No clock transition on "operandfetch:ID|register_array[0][4]" register due to stuck clock or clock enable
+Warning (14130): Reduced register "operandfetch:ID|register_array[0][4]" with stuck clock_enable port to stuck value GND
+Warning (14110): No clock transition on "operandfetch:ID|register_array[0][5]" register due to stuck clock or clock enable
+Warning (14130): Reduced register "operandfetch:ID|register_array[0][5]" with stuck clock_enable port to stuck value GND
+Warning (14110): No clock transition on "operandfetch:ID|register_array[0][6]" register due to stuck clock or clock enable
+Warning (14130): Reduced register "operandfetch:ID|register_array[0][6]" with stuck clock_enable port to stuck value GND
+Warning (14110): No clock transition on "operandfetch:ID|register_array[0][7]" register due to stuck clock or clock enable
+Warning (14130): Reduced register "operandfetch:ID|register_array[0][7]" with stuck clock_enable port to stuck value GND
+Warning (14130): Reduced register "VGA_SYNC:SYNC|pixel_row[9]" with stuck data_in port to stuck value GND
+Info: State machine "|Video_MIPS|LCD_Display:LCD|next_command" contains 13 states
+Info: State machine "|Video_MIPS|LCD_Display:LCD|state" contains 13 states
+Info: Selected Auto state machine encoding method for state machine "|Video_MIPS|LCD_Display:LCD|next_command"
+Info: Encoding result for state machine "|Video_MIPS|LCD_Display:LCD|next_command"
+    Info: Completed encoding using 13 state bits
+        Info: Encoded state bit "LCD_Display:LCD|next_command.display_clear"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.display_off"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.reset3"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.hold"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.reset1"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.drop_lcd_e"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.return_home"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.line2"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.print_string"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.mode_set"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.display_on"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.func_set"
+        Info: Encoded state bit "LCD_Display:LCD|next_command.reset2"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.reset2" uses code string "0000000000000"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.func_set" uses code string "0000000000011"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.display_on" uses code string "0000000000101"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.mode_set" uses code string "0000000001001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.print_string" uses code string "0000000010001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.line2" uses code string "0000000100001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.return_home" uses code string "0000001000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.drop_lcd_e" uses code string "0000010000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.reset1" uses code string "0000100000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.hold" uses code string "0001000000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.reset3" uses code string "0010000000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.display_off" uses code string "0100000000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|next_command.display_clear" uses code string "1000000000001"
+Info: Selected Auto state machine encoding method for state machine "|Video_MIPS|LCD_Display:LCD|state"
+Info: Encoding result for state machine "|Video_MIPS|LCD_Display:LCD|state"
+    Info: Completed encoding using 13 state bits
+        Info: Encoded state bit "LCD_Display:LCD|state.display_clear"
+        Info: Encoded state bit "LCD_Display:LCD|state.display_off"
+        Info: Encoded state bit "LCD_Display:LCD|state.reset3"
+        Info: Encoded state bit "LCD_Display:LCD|state.reset2"
+        Info: Encoded state bit "LCD_Display:LCD|state.hold"
+        Info: Encoded state bit "LCD_Display:LCD|state.drop_lcd_e"
+        Info: Encoded state bit "LCD_Display:LCD|state.return_home"
+        Info: Encoded state bit "LCD_Display:LCD|state.line2"
+        Info: Encoded state bit "LCD_Display:LCD|state.print_string"
+        Info: Encoded state bit "LCD_Display:LCD|state.mode_set"
+        Info: Encoded state bit "LCD_Display:LCD|state.display_on"
+        Info: Encoded state bit "LCD_Display:LCD|state.func_set"
+        Info: Encoded state bit "LCD_Display:LCD|state.reset1"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.reset1" uses code string "0000000000000"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.func_set" uses code string "0000000000011"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.display_on" uses code string "0000000000101"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.mode_set" uses code string "0000000001001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.print_string" uses code string "0000000010001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.line2" uses code string "0000000100001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.return_home" uses code string "0000001000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.drop_lcd_e" uses code string "0000010000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.hold" uses code string "0000100000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.reset2" uses code string "0001000000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.reset3" uses code string "0010000000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.display_off" uses code string "0100000000001"
+    Info: State "|Video_MIPS|LCD_Display:LCD|state.display_clear" uses code string "1000000000001"
+Warning (14130): Reduced register "LCD_Display:LCD|next_command.drop_lcd_e" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "LCD_Display:LCD|next_command.hold" with stuck data_in port to stuck value GND
+Warning (14130): Reduced register "LCD_Display:LCD|next_command.reset1" with stuck data_in port to stuck value GND
+Info: Registers with preset signals will power-up high
+Info: DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LCD_ON" stuck at VCC
+Warning: Design contains 3 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "DIPSwitch_1"
+    Warning (15610): No output dependent on input pin "DIPSwitch_2"
+    Warning (15610): No output dependent on input pin "DIPSwitch_4"
+Info: Implemented 1603 device resources after synthesis - the final resource count might be different
+    Info: Implemented 7 input pins
+    Info: Implemented 11 output pins
+    Info: Implemented 8 bidirectional pins
+    Info: Implemented 1498 logic cells
+    Info: Implemented 78 RAM segments
+    Info: Implemented 1 ClockLock PLLs
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 277 warnings
+    Info: Allocated 302 megabytes of memory during processing
+    Info: Processing ended: Thu Mar 26 02:34:37 2015
+    Info: Elapsed time: 00:00:34
+
+

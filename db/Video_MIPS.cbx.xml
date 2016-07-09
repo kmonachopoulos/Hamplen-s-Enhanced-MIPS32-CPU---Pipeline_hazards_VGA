@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="Video_MIPS">
+		<CBX_INST_ENTRY INSTANCE_NAME="|Video_MIPS|Char_ROM:CGROM|LPM_ROM:char_gen_rom|altrom:srom|altsyncram:rom_block" CBX_FILE_NAME="altsyncram_6401.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Video_MIPS|LPM_ROM:format_rom|altrom:srom|altsyncram:rom_block" CBX_FILE_NAME="altsyncram_c201.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Video_MIPS|datamemory:MEM|altsyncram:datamemory" CBX_FILE_NAME="altsyncram_1eh3.tdf"/>
+		<CBX_INST_ENTRY INSTANCE_NAME="|Video_MIPS|instrfetch:IFE|altsyncram:Instr_Memory" CBX_FILE_NAME="altsyncram_r1g3.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

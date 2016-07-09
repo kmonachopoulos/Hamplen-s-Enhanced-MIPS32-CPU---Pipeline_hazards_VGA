@@ -1,0 +1,66 @@
+--------------------------------------------------------------------------------------
+Timing Analyzer Summary
+--------------------------------------------------------------------------------------
+
+Type           : Worst-case tsu
+Slack          : N/A
+Required Time  : None
+Actual Time    : 6.359 ns
+From           : SW8
+To             : reset
+From Clock     : --
+To Clock       : Clock_48Mhz
+Failed Paths   : 0
+
+Type           : Worst-case tco
+Slack          : N/A
+Required Time  : None
+Actual Time    : 7.108 ns
+From           : VGA_SYNC:SYNC|video_on_v
+To             : Video_blank_out
+From Clock     : Clock_48Mhz
+To Clock       : --
+Failed Paths   : 0
+
+Type           : Worst-case th
+Slack          : N/A
+Required Time  : None
+Actual Time    : -2.498 ns
+From           : DIPSwitch_3
+To             : switch_sync[2]
+From Clock     : --
+To Clock       : Clock_48Mhz
+Failed Paths   : 0
+
+Type           : Clock Setup: 'video_PLL:video_PLL_inst|altpll:altpll_component|_clk0'
+Slack          : 14.335 ns
+Required Time  : 24.00 MHz ( period = 41.666 ns )
+Actual Time    : 76.95 MHz ( period = 12.996 ns )
+From           : operandfetch:ID|register_array[5][3]
+To             : operandfetch:ID|Read_Data_2_p[3]
+From Clock     : video_PLL:video_PLL_inst|altpll:altpll_component|_clk0
+To Clock       : video_PLL:video_PLL_inst|altpll:altpll_component|_clk0
+Failed Paths   : 0
+
+Type           : Clock Hold: 'video_PLL:video_PLL_inst|altpll:altpll_component|_clk0'
+Slack          : -1.666 ns
+Required Time  : 24.00 MHz ( period = 41.666 ns )
+Actual Time    : N/A
+From           : reset
+To             : operandfetch:ID|Instruction_pp[24]
+From Clock     : video_PLL:video_PLL_inst|altpll:altpll_component|_clk0
+To Clock       : video_PLL:video_PLL_inst|altpll:altpll_component|_clk0
+Failed Paths   : 109
+
+Type           : Total number of failed paths
+Slack          : 
+Required Time  : 
+Actual Time    : 
+From           : 
+To             : 
+From Clock     : 
+To Clock       : 
+Failed Paths   : 109
+
+--------------------------------------------------------------------------------------
+

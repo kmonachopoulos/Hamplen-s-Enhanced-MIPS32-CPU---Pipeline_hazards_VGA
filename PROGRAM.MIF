@@ -1,0 +1,44 @@
+-- MIPS Instruction Memory Initialization File
+Depth = 256;
+Width = 32;
+Address_radix = HEX;
+Data_radix = HEX;
+Content
+Begin
+-- Use NOPS for default instruction memory values
+	[00..FF]: 00000000; -- nop (sll r0,r0,0)
+-- Place MIPS Instructions here
+-- Note: memory addresses are in words and not bytes
+-- i.e. next location is +1 and not +4
+--beq
+--00: 8C010000; -- lw $1,0 ;memory(00)=55 
+--01: 8C020000; -- lw $2,1 ;memory(00)=55 
+--02: 1022FFFD; -- beq $1,$2,-3
+--bneq
+--00: 8C010000; -- lw $1,0 ;memory(00)=55 
+--01: 8C020001; -- lw $2,1 ;memory(01)=AA 
+--02: 1422FFFD; -- bneq $1,$2,-3
+--jump
+--00: 8C020000; -- lw $2,0 ;memory(00)=55 
+--01: 8C030001; -- lw $3,1 ;memory(01)=AA 
+--02: 08000000; -- jump to address 00
+--
+
+-- FINAL PROGRAM (WORKING) 
+00: 8C010000; -- LD R[1]<-55 
+01: 8C020001; -- LD R[2]<-AA 
+02: 2423F000; -- ADDIU R[3],R[1],0xF000 
+03: 8C040002; -- LD R[4]<-00 
+04: 10820001; -- BEQ R[2],R[4],PC->06 (Offset 1) 
+05: 14220001; -- BNEQ R[1],R[2],PC->07 (Offset 1) 
+06: 08000000; -- JUMP, PC->00 
+07: 8C040001; -- LD R[4]<-AA 
+08: AC040003; -- STORE M[3],R[4] 
+09: 08000004; -- JUMP, PC->04        
+--00: 8C020000; 	-- lw $2,0 ;memory(00)=55
+--01: 8C030001; 	-- lw $3,1 ;memory(01)=AA
+--02: 00430820; 	-- add $1,$2,$3
+--03: AC010003; 	-- sw $1,3 ;memory(03)=FF
+--04: 1022FFFF; 	-- beq $1,$2,-4
+--05: 1021FFFA; 	-- beq $1,$1,-24
+End;

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Mar 26 02:34:36 2015
+Quartus II 64-Bit Version : 7.2 Build 151 09/26/2007 SJ Full Version
+Revision Name : Video_MIPS
+Top-level Entity Name : Video_MIPS
+Family : Cyclone II
+Total logic elements : 1,286
+    Total combinational functions : 1,286
+    Dedicated logic registers : 543
+Total registers : 543
+Total pins : 26
+Total virtual pins : 0
+Total memory bits : 20,840
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 1
